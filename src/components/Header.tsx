@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Search, Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const navigationItems = [
   {
@@ -114,7 +115,7 @@ export default function Header() {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-4">
               {navigationItems.map((item) => (
                 <div
                   key={item.title}
@@ -122,14 +123,14 @@ export default function Header() {
                   onMouseEnter={() => setHoveredItem(item.title)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
-                  <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors py-4">
+                  <button className="flex items-center gap-1 text-xs font-medium text-foreground hover:text-primary transition-colors py-4 whitespace-nowrap">
                     {item.title}
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="w-3 h-3" />
                   </button>
 
                   {/* Dropdown */}
                   {hoveredItem === item.title && (
-                    <div className="absolute top-full left-0 w-64 bg-background border shadow-luxury rounded-lg py-4 z-50">
+                    <div className="absolute top-full left-0 w-56 bg-background border shadow-luxury rounded-lg py-4 z-50">
                       {item.submenu.map((subItem) => (
                         <a
                           key={subItem}
@@ -151,14 +152,22 @@ export default function Header() {
                 <Search className="w-5 h-5" />
               </Button>
 
-              {/* Customer Portals */}
-              <div className="hidden lg:flex items-center gap-2">
-                {customerPortals.map((portal) => (
-                  <Button key={portal} variant="outline" size="sm" className="text-xs">
-                    {portal}
+              {/* Customer Portals Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="text-xs hidden lg:flex items-center gap-1">
+                    CUSTOMER PORTALS
+                    <ChevronDown className="w-3 h-3" />
                   </Button>
-                ))}
-              </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  {customerPortals.map((portal) => (
+                    <DropdownMenuItem key={portal} className="text-xs">
+                      {portal}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
 
               {/* Mobile Menu */}
               <Sheet>
