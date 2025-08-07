@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Leaf, Zap, Users, TrendingUp, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const discoverItems = [
   {
@@ -30,6 +31,12 @@ const discoverItems = [
 ];
 
 export default function DiscoverSection() {
+  const navigate = useNavigate();
+
+  const handleCardClick = (link: string) => {
+    navigate(link);
+  };
+
   return (
     <section className="py-20 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4">
@@ -46,7 +53,11 @@ export default function DiscoverSection() {
           {discoverItems.map((item) => {
             const IconComponent = item.icon;
             return (
-              <Card key={item.title} className="group border-0 shadow-sm hover:shadow-luxury transition-all duration-300 hover:-translate-y-2">
+              <Card 
+                key={item.title} 
+                className="group border-0 shadow-sm hover:shadow-luxury transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                onClick={() => handleCardClick(item.link)}
+              >
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <IconComponent className="w-8 h-8 text-white" />
@@ -62,10 +73,16 @@ export default function DiscoverSection() {
                   
                   <Button 
                     variant="ghost" 
-                    className="text-primary hover:text-primary group-hover:translate-x-1 transition-all duration-300 p-0 h-auto"
+                    className="text-primary hover:text-primary hover:shadow-glow-red group-hover:translate-x-1 transition-all duration-300 p-2 h-auto flex items-center justify-center"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleCardClick(item.link);
+                    }}
                   >
-                    Learn more
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    <span className="flex items-center justify-center">
+                      Learn more
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    </span>
                   </Button>
                 </CardContent>
               </Card>

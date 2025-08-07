@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Zap, Leaf, TrendingUp, History } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const featuredContent = [
   {
@@ -42,62 +43,68 @@ const featuredContent = [
 ];
 
 export default function FeaturedCards() {
+  const navigate = useNavigate();
+
+  const handleCardClick = (link: string) => {
+    navigate(link);
+  };
+
   return (
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Grid of Featured Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        {/* Grid of Featured Cards - Now Symmetrical 2x2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
           {featuredContent.map((item, index) => {
             const IconComponent = item.icon;
+            
             return (
               <Card 
                 key={item.id} 
-                className={`group overflow-hidden border-0 shadow-luxury hover:shadow-glow transition-all duration-500 ${
-                  index === 0 ? 'md:col-span-2 lg:h-96' : 'lg:h-80'
-                }`}
+                className="group overflow-hidden border-0 lg:h-80 cursor-pointer shadow-luxury hover:shadow-glow transition-all duration-300 hover:-translate-y-2 hover:scale-105"
+                onClick={() => handleCardClick(item.link)}
               >
-                <div className={`relative h-full ${index === 0 ? 'md:flex md:items-center' : ''}`}>
+                <div className="relative h-full">
                   {/* Background Image */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${
-                    index % 3 === 0 ? 'from-primary/90 to-primary/70' :
-                    index % 3 === 1 ? 'from-accent/90 to-accent/70' :
-                    'from-primary/80 to-accent/60'
+                    index % 4 === 0 ? 'from-primary/90 to-primary/70' :
+                    index % 4 === 1 ? 'from-accent/90 to-accent/70' :
+                    index % 4 === 2 ? 'from-primary/80 to-accent/60' :
+                    'from-accent/80 to-primary/60'
                   }`}>
                     <div className="absolute inset-0 bg-black/20"></div>
                   </div>
 
                   {/* Icon Background */}
-                  <div className="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-                    <IconComponent className="w-6 h-6 text-white" />
+                  <div className="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20">
+                    <IconComponent className="w-6 h-6 text-white transition-all duration-300 group-hover:scale-110" />
                   </div>
 
-                  <CardContent className={`relative z-10 p-8 text-white h-full flex flex-col justify-end ${
-                    index === 0 ? 'md:max-w-2xl' : ''
-                  }`}>
+                  <CardContent className="relative z-10 p-8 text-white h-full flex flex-col justify-end">
                     {/* Category Badge */}
                     <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium mb-4 w-fit">
                       {item.category}
                     </div>
 
                     {/* Content */}
-                    <h3 className={`font-bold mb-4 leading-tight ${
-                      index === 0 ? 'text-2xl lg:text-4xl' : 'text-xl lg:text-2xl'
-                    }`}>
+                    <h3 className="font-bold mb-4 leading-tight text-xl lg:text-2xl">
                       {item.title}
                     </h3>
 
-                    <p className={`text-white/90 mb-6 ${
-                      index === 0 ? 'text-lg max-w-xl' : 'text-base'
-                    }`}>
+                    <p className="text-white/90 mb-6 text-base">
                       {item.description}
                     </p>
 
                     <Button 
-                      className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 w-fit group-hover:translate-x-1"
-                      size={index === 0 ? 'lg' : 'default'}
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:shadow-glow-red transition-all duration-300 w-fit flex items-center justify-center px-4 py-2 group-hover:translate-x-2"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCardClick(item.link);
+                      }}
                     >
-                      Learn more
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      <span className="flex items-center justify-center">
+                        Learn more
+                        <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
                     </Button>
                   </CardContent>
                 </div>
@@ -106,20 +113,7 @@ export default function FeaturedCards() {
           })}
         </div>
 
-        {/* Mini Cards Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-          {featuredContent.map((item, index) => (
-            <Card key={`mini-${item.id}`} className="overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow">
-              <CardContent className="p-4 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg mx-auto mb-3 flex items-center justify-center">
-                  <item.icon className="w-8 h-8 text-white" />
-                </div>
-                <h4 className="font-semibold text-sm mb-1">{item.category}</h4>
-                <p className="text-xs text-muted-foreground line-clamp-2">{item.title}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+
       </div>
     </section>
   );

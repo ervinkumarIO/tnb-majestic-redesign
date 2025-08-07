@@ -4,13 +4,20 @@ import { Download, FileText } from 'lucide-react';
 export default function HeroSection() {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/80"></div>
-      
-      {/* Background pattern/texture */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-grid-pattern repeat"></div>
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src="/src/components/images/TNB_HQ_GRID.png" 
+          alt="TNB Headquarters and Grid Infrastructure"
+          className="w-full h-full object-cover"
+        />
       </div>
+      
+      {/* Background overlay for text clarity */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/80 to-accent/75"></div>
+      
+      {/* Additional overlay for enhanced text readability */}
+      <div className="absolute inset-0 bg-black/20"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto">

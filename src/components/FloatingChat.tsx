@@ -13,6 +13,8 @@ interface Message {
 
 export default function FloatingChat() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isButtonAnimating, setIsButtonAnimating] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -54,11 +56,31 @@ export default function FloatingChat() {
     }
   };
 
+  const handleChatToggle = () => {
+    // Trigger button animation
+    setIsButtonAnimating(true);
+    setTimeout(() => setIsButtonAnimating(false), 600);
+
+    if (isOpen) {
+      // Start closing animation
+      setIsClosing(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        setIsClosing(false);
+      }, 300);
+    } else {
+      // Open immediately with enter animation
+      setIsOpen(true);
+    }
+  };
+
   return (
     <>
       {/* Chat Widget */}
       {isOpen && (
-        <Card className="fixed bottom-24 right-6 w-80 h-96 shadow-luxury border-0 z-50 flex flex-col">
+        <Card className={`fixed bottom-24 right-6 w-80 h-96 shadow-luxury border-0 z-50 flex flex-col ${
+          isClosing ? 'chat-popup-exit' : 'chat-popup-enter'
+        }`}>
           <CardHeader className="bg-gradient-to-r from-primary to-accent text-white p-4 rounded-t-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -69,7 +91,7 @@ export default function FloatingChat() {
                 variant="ghost"
                 size="icon"
                 className="text-white hover:bg-white/20 h-8 w-8"
-                onClick={() => setIsOpen(false)}
+                onClick={handleChatToggle}
               >
                 <X className="w-4 h-4" />
               </Button>
@@ -140,10 +162,10 @@ export default function FloatingChat() {
 
       {/* Chat Toggle Button */}
       <Button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleChatToggle}
         className={`fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-luxury bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 z-50 ${
           isOpen ? 'scale-90' : 'scale-100'
-        }`}
+        } ${isButtonAnimating ? 'chat-button-spin' : ''}`}
         size="icon"
       >
         {isOpen ? (

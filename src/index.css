@@ -49,6 +49,7 @@ All colors MUST be HSL.
     /* Shadows */
     --shadow-luxury: 0 25px 50px -12px hsl(var(--tnb-blue) / 0.25);
     --shadow-glow: 0 0 40px hsl(var(--tnb-blue) / 0.15);
+    --shadow-glow-red: 0 0 40px hsl(var(--tnb-red) / 0.25);
 
     --radius: 0.5rem;
 
@@ -129,4 +130,68 @@ All colors MUST be HSL.
     background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
     background-size: 20px 20px;
   }
+  
+  /* Chat Button Circular Motion Animation */
+  @keyframes spin-pulse {
+    0% { 
+      transform: rotate(0deg) scale(1); 
+    }
+    25% { 
+      transform: rotate(90deg) scale(1.1); 
+    }
+    50% { 
+      transform: rotate(180deg) scale(1); 
+    }
+    75% { 
+      transform: rotate(270deg) scale(1.1); 
+    }
+    100% { 
+      transform: rotate(360deg) scale(1); 
+    }
+  }
+  
+  .chat-button-spin {
+    animation: spin-pulse 0.6s ease-in-out;
+  }
+  
+  /* Chat Popup Fluid Animation */
+  @keyframes slide-up-fade {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.9);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translateY(-5px) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes slide-down-fade {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translateY(-5px) scale(0.98);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.9);
+    }
+  }
+  
+  .chat-popup-enter {
+    animation: slide-up-fade 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .chat-popup-exit {
+    animation: slide-down-fade 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+
 }
