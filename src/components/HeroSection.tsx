@@ -23,7 +23,7 @@ export default function HeroSection() {
         <div className="max-w-4xl mx-auto">
           {/* Announcement Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-            <span className="text-sm font-medium">RESULTS ANNOUNCEMENT</span>
+            <span className="text-sm font-medium">RESULTS ANNOUNCEMENT 🚀</span>
           </div>
 
           {/* Main Headline */}
