@@ -7,7 +7,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="/src/components/images/TNB_HQ_GRID.png" 
+          src="/images/TNB_HQ_GRID.png" 
           alt="TNB Headquarters and Grid Infrastructure"
           className="w-full h-full object-cover"
         />

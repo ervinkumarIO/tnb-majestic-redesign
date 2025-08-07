@@ -95,17 +95,17 @@ const sustainabilityReports = [
 const bottomSections = [
   {
     title: 'SUSTAINABILITY MANAGEMENT',
-    image: '/src/components/images/susmanage.jpg',
+    image: '/images/susmanage.jpg',
     buttonText: 'Find Out More'
   },
   {
     title: 'SUSTAINABILITY AT TNB',
-    image: '/src/components/images/susattnb.jpg',
+    image: '/images/susattnb.jpg',
     buttonText: 'Find Out More'
   },
   {
     title: 'ESG STORIES',
-    image: '/src/components/images/esgstories.jpg',
+    image: '/images/esgstories.jpg',
     buttonText: 'Find Out More'
   }
 ];
@@ -156,7 +156,7 @@ export default function Sustainability() {
             {/* Hero Sustainability Visual */}
             <div className="relative">
               <img 
-                src="/src/components/images/energy-sustainable.png" 
+                src="/images/energy-sustainable.png" 
                 alt="TNB Sustainability Visual - Clean energy infrastructure and renewable technologies powering Malaysia's sustainable future"
                 className="w-full h-auto object-contain rounded-2xl shadow-luxury"
               />
@@ -177,7 +177,7 @@ export default function Sustainability() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="aspect-square bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl overflow-hidden">
               <img 
-                src="/src/components/images/tnbCeo.jpg" 
+                src="/images/tnbCeo.jpg" 
                 alt="TNB CEO Leadership Portrait - Leading Malaysia's energy transition towards Net Zero 2050"
                 className="w-full h-full object-cover"
               />
@@ -334,7 +334,7 @@ export default function Sustainability() {
             
             <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden">
               <img 
-                src="/src/components/images/new_esg_data_universe.png" 
+                src="/images/new_esg_data_universe.png" 
                 alt="ESG Framework Diagram - TNB's comprehensive ESG data universe showing general and sector-specific sustainability reporting frameworks"
                 className="w-full h-full object-contain p-4"
               />
@@ -349,7 +349,7 @@ export default function Sustainability() {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="aspect-video bg-gradient-to-br from-green-500 to-blue-500 rounded-2xl overflow-hidden">
               <img 
-                src="/src/components/images/susreport.jpeg" 
+                src="/images/susreport.jpeg" 
                 alt="TNB Sustainability Report 2024 Cover - Leading the Energy Transition for a Sustainable Tomorrow"
                 className="w-full h-full object-contain"
               />
