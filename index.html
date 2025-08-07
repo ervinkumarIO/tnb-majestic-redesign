@@ -36,14 +36,66 @@
     <meta name="twitter:title" content="TNB Malaysia - Powering Malaysia's Sustainable Future" />
     <meta name="twitter:description" content="TNB Malaysia leading the nation's sustainable energy transformation with innovative solutions and commitment to environmental excellence." />
     <meta name="twitter:image" content="https://testprep.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="TNB Malaysia - Powering Malaysia's Sustainable Future" />
     <meta name="twitter:site" content="@TNBMalaysia" />
     <meta name="twitter:creator" content="@TNBMalaysia" />
+    
+    <!-- Telegram specific -->
+    <meta property="telegram:channel" content="@TNBMalaysia" />
+    
+    <!-- WhatsApp and other messaging apps -->
+    <meta property="al:web:url" content="https://testprep.dev" />
+    
+    <!-- Additional platform overrides -->
+    <meta property="og:image:alt" content="TNB Malaysia - Powering Malaysia's Sustainable Future" />
+    <meta property="og:image:secure_url" content="https://testprep.dev/og-image.png" />
+    <meta property="og:updated_time" content="2025-01-08T14:00:00Z" />
 
     <!-- Additional Meta Tags for better control -->
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#1e40af" />
     <meta name="msapplication-TileColor" content="#1e40af" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://testprep.dev" />
+    
+    <!-- Override any platform injected meta tags -->
+    <meta name="referrer" content="origin" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Force override for social platforms -->
+    <script>
+      // Override any dynamically injected meta tags
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set document title
+        document.title = 'TNB Malaysia - Powering Malaysia\'s Sustainable Future';
+        
+        // Remove any existing og:title and recreate
+        var existingOgTitle = document.querySelector('meta[property="og:title"]');
+        if (existingOgTitle && existingOgTitle.content !== 'TNB Malaysia - Powering Malaysia\'s Sustainable Future') {
+          existingOgTitle.content = 'TNB Malaysia - Powering Malaysia\'s Sustainable Future';
+        }
+        
+        // Remove any existing og:description and recreate
+        var existingOgDesc = document.querySelector('meta[property="og:description"]');
+        if (existingOgDesc && !existingOgDesc.content.includes('TNB Malaysia')) {
+          existingOgDesc.content = 'TNB Malaysia leading the nation\'s sustainable energy transformation with innovative solutions and commitment to environmental excellence.';
+        }
+        
+        // Remove any existing og:image and recreate
+        var existingOgImage = document.querySelector('meta[property="og:image"]');
+        if (existingOgImage && !existingOgImage.content.includes('og-image.png')) {
+          existingOgImage.content = 'https://testprep.dev/og-image.png';
+        }
+        
+        // Remove any Lovable branding elements
+        var lovableElements = document.querySelectorAll('[data-lovable], [class*="lovable"], [id*="lovable"]');
+        lovableElements.forEach(function(element) {
+          element.remove();
+        });
+      });
+    </script>
   </head>
 
   <body>
