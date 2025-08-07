@@ -1,0 +1,5 @@
+[33m11925be[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Security fix: Remove exposed OpenAI API key, add proper env var handling
+[33m4311ca2[m Added AI api key
+[33m8ef7380[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m feat: Implemented AI chatbot for customer service
+[33m93eacda[m feat: Attempt to remove lovable branding when sharing
+[33m4ab281b[m feat: Another attempt to remove lovable braning

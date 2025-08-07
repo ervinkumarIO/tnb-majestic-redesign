@@ -1,7 +1,7 @@
 // Chat Configuration
 export const CHAT_CONFIG = {
   // You'll need to set this in your environment variables or replace with your actual API key
-  OPENAI_API_KEY: import.meta.env.VITE_OPENAI_API_KEY || 'your_openai_api_key_here',
+  OPENAI_API_KEY: import.meta.env.VITE_OPENAI_API_KEY || '',
   MODEL: 'gpt-3.5-turbo',
   MAX_TOKENS: 150,
   TEMPERATURE: 0.7,
